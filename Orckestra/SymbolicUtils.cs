@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Orckestra
 {
-    internal class PermissionInfo 
+    internal class PermissionInfo
     {
         public int Value { get; set; }
         public char Symbol { get; set; }
     }
-    
+
     public static class SymbolicUtils
     {
         private const int BlockCount = 3;
@@ -18,7 +17,7 @@ namespace Orckestra
         //But I think that such dictionary
         //Allows better to capture domain knowledge
         private readonly static Dictionary<int, PermissionInfo> Permissions = new Dictionary<int, PermissionInfo>() {
-                {0, new PermissionInfo { 
+                {0, new PermissionInfo {
                     Symbol = 'r',
                     Value = 4
                 } },
@@ -31,8 +30,6 @@ namespace Orckestra
                     Value = 1
                 }} };
 
-        
-        
         public static int SymbolicToOctal(string input)
         {
             if (input.Length != 9)

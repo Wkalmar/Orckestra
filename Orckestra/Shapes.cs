@@ -21,7 +21,7 @@ namespace Orckestra
         {
             _radius = radius;
         }
-        
+
         public string ShapeType => "Circle";
 
         public double CalculateArea()
@@ -72,7 +72,7 @@ namespace Orckestra
         {
             _side = side;
         }
-        
+
         public string ShapeType => "Square";
 
         public double CalculateArea()
@@ -91,7 +91,7 @@ namespace Orckestra
             _width = width;
             _height = height;
         }
-        
+
         public string ShapeType => "Rectangle";
 
         public double CalculateArea()
@@ -104,7 +104,7 @@ namespace Orckestra
     {
         private const int MinSidesSupported = 1;
         private const int MaxSidesSupported = 4;
-        
+
         public static IShape CreateShape(string input)
         {
             // RemoveEmptyEntries to eliminate multiple whitespaces
@@ -123,13 +123,13 @@ namespace Orckestra
                     {
                         return new Square(parsedSides[0]);
                     }
-                    else 
+                    else
                     {
                         return new Rectangle(parsedSides[0], parsedSides[1]);
                     }
                 case 3:
                     return new Triangle(parsedSides[0], parsedSides[1], parsedSides[2]);
-                case 4: 
+                case 4:
                     var differentSides = parsedSides.Distinct().ToList();
                     if (differentSides.Count() == 1)
                     {
@@ -139,15 +139,15 @@ namespace Orckestra
                     {
                         return new Rectangle(differentSides[0], differentSides[1]);
                     }
-                    else 
+                    else
                     {
                         throw new ArgumentException("Although this shape has 4 sides it's neither a square, nor a rectangle");
                     }
                 default:
                     //this one is not really reachable but better safe than sorry :)
-                    throw new ArgumentException("Invalid input"); 
+                    throw new ArgumentException("Invalid input");
             }
-                
+
         }
 
         private static double[] ParseSides(string[] unparsedSides)

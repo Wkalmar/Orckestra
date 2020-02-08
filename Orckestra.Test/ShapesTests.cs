@@ -1,5 +1,5 @@
-﻿using FluentAssertions;
-using System;
+﻿using System;
+using FluentAssertions;
 using Xunit;
 
 namespace Orckestra.Test
@@ -7,7 +7,7 @@ namespace Orckestra.Test
     public class ShapesTests
     {
         [Fact]
-        public void ValidCircle() 
+        public void ValidCircle()
         {
             var circle = ShapeFactory.CreateShape(" 2 ");
             circle.CalculateArea().Should().BeApproximately(12.56, 0.01);
@@ -38,7 +38,7 @@ namespace Orckestra.Test
         public void ValidTriangle_EqualSides()
         {
             var circle = ShapeFactory.CreateShape("5 5 5");
-            circle.CalculateArea().Should().BeApproximately(25*Math.Sqrt(3)/4, 0.01);
+            circle.CalculateArea().Should().BeApproximately(25 * Math.Sqrt(3) / 4, 0.01);
         }
 
         [Fact]

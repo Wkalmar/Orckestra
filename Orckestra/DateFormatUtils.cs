@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 
 namespace Orckestra
 {
@@ -26,21 +25,20 @@ namespace Orckestra
         // i.e. array of strings like I do in tests
         public static IEnumerable<string> ChangeDateFormat(IReadOnlyCollection<string> input)
         {
-            var filtered = new List<DateTime>();
             foreach (var item in input)
             {
                 for (var i = 0; i < ValidDateFormats.Length; i++)
                 {
-                    var parsed = DateTime.TryParseExact(item, 
-                        ValidDateFormats[i], 
-                        CultureInfo.InvariantCulture, 
-                        DateTimeStyles.None, 
+                    var parsed = DateTime.TryParseExact(item,
+                        ValidDateFormats[i],
+                        CultureInfo.InvariantCulture,
+                        DateTimeStyles.None,
                         out var d);
                     if (parsed)
                     {
                         yield return d.ToString(OutputDateFromat); //let the caller enumerate it once needed
                     }
-                }                
+                }
             }
         }
     }
