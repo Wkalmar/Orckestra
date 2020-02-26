@@ -3,15 +3,18 @@ using System.Collections.Generic;
 
 namespace Orckestra
 {
-    internal class PermissionInfo
+    internal class SymbolicPermission
     {
-        public int Value { get; set; }
-        public char Symbol { get; set; }
-    }
+        private struct PermissionInfo
+        {
+            public int Value { get; set; }
+            public char Symbol { get; set; }
+        }
 
-    public static class SymbolicUtils
-    {
         private const int BlockCount = 3;
+        private const int BlockLength = 3;
+        private const int MissingPermissionSymbol = '-';
+
         //I could smh decuce value from the position
         //Since values are powers of 2
         //But I think that such dictionary
@@ -30,18 +33,46 @@ namespace Orckestra
                     Value = 1
                 }} };
 
-        public static int SymbolicToOctal(string input)
+        private string _value;
+
+        private SymbolicPermission(string value)
         {
-            if (input.Length != 9)
+            _value = value;
+        }
+
+        public static SymbolicPermission Parse(string input)
+        {
+            if (input.Length != BlockCount * BlockLength)
             {
                 throw new ArgumentException("input should be a string 3 blocks of 3 characters each");
             }
+            for (var i = 0; i < input.Length; i++)
+            {
+                TestCharForValidity(input, i);
+            }
+
+            return new SymbolicPermission(input);
+        }
+
+        public int GetOctalRepresentation()
+        {
             var res = 0;
             for (var i = 0; i < BlockCount; i++)
             {
-                res += ConvertBlockToOctal(input, i);
+                res += ConvertBlockToOctal(_value, i);
             }
             return res;
+        }
+
+        private static void TestCharForValidity(string input, int position)
+        {
+            var index = position % BlockLength;
+            var expectedPermission = Permissions[index];
+            var symbolToTest = input[position];
+            if (symbolToTest != expectedPermission.Symbol && symbolToTest != MissingPermissionSymbol)
+            {
+                throw new ArgumentException($"invalid input in position {position}");
+            }
         }
 
         private static int ConvertBlockToOctal(string input, int blockNumber)
@@ -60,6 +91,15 @@ namespace Orckestra
             //but since requirements don't explictly state that
             //I think base of 10 is good enough :)
             return res * (int)Math.Pow(10, BlockCount - blockNumber - 1);
+        }
+    }
+
+    public static class SymbolicUtils
+    {
+        public static int SymbolicToOctal(string input)
+        {
+            var permission = SymbolicPermission.Parse(input);
+            return permission.GetOctalRepresentation();
         }
     }
 }
