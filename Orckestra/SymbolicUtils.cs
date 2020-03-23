@@ -59,7 +59,8 @@ namespace Orckestra
             var res = 0;
             for (var i = 0; i < BlockCount; i++)
             {
-                res += ConvertBlockToOctal(_value, i);
+                var block = GetBlock(i);
+                res += ConvertBlockToOctal(block) * (int)Math.Pow(10, BlockCount - i - 1);
             }
             return res;
         }
@@ -75,12 +76,17 @@ namespace Orckestra
             }
         }
 
-        private static int ConvertBlockToOctal(string input, int blockNumber)
+        private string GetBlock(int blockNumber)
+        {
+            return _value.Substring(blockNumber * BlockLength, BlockLength);
+        }
+
+        private int ConvertBlockToOctal(string block)
         {
             var res = 0;
             foreach (var (index, permission) in Permissions)
             {
-                var actualValue = input[blockNumber * BlockCount + index];
+                var actualValue = block[index];
                 if (actualValue == permission.Symbol)
                 {
                     res += permission.Value;
@@ -90,7 +96,7 @@ namespace Orckestra
             //that I shoud play with base of 8
             //but since requirements don't explictly state that
             //I think base of 10 is good enough :)
-            return res * (int)Math.Pow(10, BlockCount - blockNumber - 1);
+            return res;
         }
     }
 
