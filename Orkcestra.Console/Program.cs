@@ -1,31 +1,32 @@
 ﻿using System;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Running;
 
 namespace Orckestra
 {
+    [MemoryDiagnoser]
+    public class Test
+    {
+        [Benchmark]
+        public void Test1()
+        {
+            var a = SymbolicUtils.SymbolicToOctal("rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-");
+        }
+
+        [Benchmark]
+        public void Test2()
+        {
+            var b = SymbolicUtils2.SymbolicToOctal("rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-");
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter shape dimensions. Press q to quit");
-            while (true)
-            {
-                try
-                {
-                    var input = Console.ReadLine();
-                    if (string.Equals("q", input, StringComparison.OrdinalIgnoreCase))
-                    {
-                        break;
-                    }
-                    var shape = ShapeFactory.CreateShape(input);
-                    Console.WriteLine($"Shape type: {shape.ShapeType}, Area: {shape.CalculateArea()}");
-                }
-                catch (ArgumentException e)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(e.Message);
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
-            }
+            BenchmarkRunner.Run<Test>();
+            Console.ReadLine();
+
         }
     }
 }

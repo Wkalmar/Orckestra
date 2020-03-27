@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Orckestra
 {
-    internal ref struct SymbolicPermission
+    internal class SymbolicPermission2
     {
         private struct PermissionInfo
         {
@@ -69,14 +69,14 @@ namespace Orckestra
                     Value = 1
                 }}};
 
-        private ReadOnlySpan<char> _value;
+        private string _value;
 
-        private SymbolicPermission(string value)
+        private SymbolicPermission2(string value)
         {
             _value = value;
         }
 
-        public static SymbolicPermission Parse(string input)
+        public static SymbolicPermission2 Parse(string input)
         {
             if (input.Length != BlockCount * BlockLength)
             {
@@ -87,7 +87,7 @@ namespace Orckestra
                 TestCharForValidity(input, i);
             }
 
-            return new SymbolicPermission(input);
+            return new SymbolicPermission2(input);
         }
 
         public int GetOctalRepresentation()
@@ -112,12 +112,12 @@ namespace Orckestra
             }
         }
 
-        private ReadOnlySpan<char> GetBlock(int blockNumber)
+        private string GetBlock(int blockNumber)
         {
-            return _value.Slice(blockNumber * BlockLength, BlockLength);
+            return _value.Substring(blockNumber * BlockLength, BlockLength);
         }
 
-        private int ConvertBlockToOctal(ReadOnlySpan<char> block)
+        private int ConvertBlockToOctal(string block)
         {
             var res = 0;
             foreach (var (index, permission) in Permissions)
@@ -136,11 +136,11 @@ namespace Orckestra
         }
     }
 
-    public static class SymbolicUtils
+    public static class SymbolicUtils2
     {
         public static int SymbolicToOctal(string input)
         {
-            var permission = SymbolicPermission.Parse(input);
+            var permission = SymbolicPermission2.Parse(input);
             return permission.GetOctalRepresentation();
         }
     }
