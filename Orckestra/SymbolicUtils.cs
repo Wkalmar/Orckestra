@@ -71,12 +71,12 @@ namespace Orckestra
 
         private ReadOnlySpan<char> _value;
 
-        private SymbolicPermission(string value)
+        private SymbolicPermission(ReadOnlySpan<char> value)
         {
             _value = value;
         }
 
-        public static SymbolicPermission Parse(string input)
+        public static SymbolicPermission Parse(ReadOnlySpan<char> input)
         {
             if (input.Length != BlockCount * BlockLength)
             {
@@ -101,7 +101,7 @@ namespace Orckestra
             return res;
         }
 
-        private static void TestCharForValidity(string input, int position)
+        private static void TestCharForValidity(ReadOnlySpan<char> input, int position)
         {
             var index = position % BlockLength;
             var expectedPermission = Permissions[index];
@@ -128,7 +128,7 @@ namespace Orckestra
                     res += permission.Value;
                 }
             }
-            //I guess name of the method suggests 
+            //I guess name of the method suggests
             //that I shoud play with base of 8
             //but since requirements don't explictly state that
             //I think base of 10 is good enough :)
