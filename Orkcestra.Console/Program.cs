@@ -8,13 +8,13 @@ namespace Orckestra
     public class Test
     {
         [Benchmark]
-        public void Test1()
+        public void ReadonlySpan()
         {
             var a = SymbolicUtils.SymbolicToOctal("rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-");
         }
 
         [Benchmark]
-        public void Test2()
+        public void String()
         {
             var b = SymbolicUtils2.SymbolicToOctal("rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-");
         }
