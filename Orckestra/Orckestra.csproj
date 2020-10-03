@@ -9,4 +9,8 @@
     <StartupObject />
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Orckestra.Fsharp.fsproj" />
+  </ItemGroup>
+
 </Project>

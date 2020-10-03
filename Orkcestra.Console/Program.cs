@@ -14,6 +14,12 @@ namespace Orckestra
         }
 
         [Benchmark]
+        public void ReadonlySpanWithFsharp()
+        {
+            var b = SymbolicUtils3.SymbolicToOctal("rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-");
+        }
+
+        [Benchmark]
         public void String()
         {
             var b = SymbolicUtils2.SymbolicToOctal("rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-");
@@ -24,7 +30,8 @@ namespace Orckestra
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run<Test>();
+            //BenchmarkRunner.Run<Test>();
+            var b = SymbolicUtils3.SymbolicToOctal("rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-rwxr-x-w-");
             Console.ReadLine();
 
         }
