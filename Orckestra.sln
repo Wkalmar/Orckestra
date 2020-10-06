@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orckestra.Test", "Orckestra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orkcestra.Console", "Orkcestra.Console\Orkcestra.Console.csproj", "{16BCDCC2-53E0-4011-877D-EBB34D6F2CE7}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Orckestra.Fsharp", "ClassLibrary1\Orckestra.Fsharp.fsproj", "{29E73933-84A0-4989-B0FE-D0D00715BE80}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Orckestra.Fsharp", "Orckestra.Fsharp\Orckestra.Fsharp.fsproj", "{38C464F1-5B9B-435E-AA87-7797042E6A52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{16BCDCC2-53E0-4011-877D-EBB34D6F2CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16BCDCC2-53E0-4011-877D-EBB34D6F2CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16BCDCC2-53E0-4011-877D-EBB34D6F2CE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{29E73933-84A0-4989-B0FE-D0D00715BE80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29E73933-84A0-4989-B0FE-D0D00715BE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29E73933-84A0-4989-B0FE-D0D00715BE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29E73933-84A0-4989-B0FE-D0D00715BE80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38C464F1-5B9B-435E-AA87-7797042E6A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C464F1-5B9B-435E-AA87-7797042E6A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C464F1-5B9B-435E-AA87-7797042E6A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C464F1-5B9B-435E-AA87-7797042E6A52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

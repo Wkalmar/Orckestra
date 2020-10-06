@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\Orckestra.Fsharp.fsproj" />
+    <ProjectReference Include="..\Orckestra.Fsharp\Orckestra.Fsharp.fsproj" />
   </ItemGroup>
 
 </Project>

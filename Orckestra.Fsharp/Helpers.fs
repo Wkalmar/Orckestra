@@ -1,7 +1,6 @@
 ﻿namespace Orckestra.Fsharp
 
 open System
-open System.Runtime.CompilerServices
 
 [<Struct>]
 type PermissionInfo(symbol: char, value: int) =
@@ -9,7 +8,6 @@ type PermissionInfo(symbol: char, value: int) =
     member x.Value = value
 
 
-//[<IsByRefLike; Struct>]
 type Helpers =
     val private Permissions : PermissionInfo[]
     new () = {
